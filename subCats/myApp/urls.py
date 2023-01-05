@@ -15,9 +15,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from . views import show_genres
+from . views import show_genres, HomeView, CategoryView
 
 urlpatterns = [
-  
  path(r'^genres/$', show_genres),
+ path('', HomeView.as_view(), name = 'home'),
+#below is the path for the url in the blog app
+path('genre/<str:genre>/', CategoryView, name= 'genre'),
 ]

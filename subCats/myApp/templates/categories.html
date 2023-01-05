@@ -1,0 +1,119 @@
+{% extends 'base.html'%}
+{% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+.column {
+  float: left;
+  width: 33.3%;
+  margin-bottom: 16px;
+  padding: 0 8px;
+}
+
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  margin: 8px;
+}
+
+.about-section {
+  padding: 50px;
+  text-align: center;
+  background-color: #474e5d;
+  color: white;
+}
+
+.container {
+  padding: 0 16px;
+}
+
+.container::after, .row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.title {
+  color: grey;
+}
+
+.button {
+  border: none;
+  outline: 0;
+  display: inline-block;
+  padding: 8px;
+  color: white;
+  background-color: #000;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+}
+
+.button:hover {
+  background-color: #555;
+}
+
+@media screen and (max-width: 650px) {
+  .column {
+    width: 100%;
+    display: block;
+  }
+}
+</style>
+</head>
+<body>
+
+<div class="about-section">
+  <h1>ECOLOGICS</h1>
+	<h1>oooooh</h1>
+
+
+</div>
+
+{% if genre_products%}
+
+<h1>{{cats}} </h1>
+
+<div class="row">
+{% for productdata in genre_products%}
+  <div class="column">
+    <div class="card">
+      <!-- <img src="{{ post.header_image.url}}" alt="Jane" style="width:100%"> -->
+      <div class="container">
+        <h2>{{productdata.product_name}}</h2>
+	<!-- <p>{{productdata.short_description|slice:":150"|safe}}</p> -->
+  <p class="title">{{productdata.maker}}</p>
+	<!-- <h5>{{productdata.product_name}}</h5> -->
+	<!-- <h5>general name: {{productdata.general_name}}</h5> -->
+	<!-- <h5>keyword: {{productdata.keyword}}</h5>q -->
+	<!-- <h5>sub category: {{productdata.sub_category}}</h5> -->
+	<!-- <h5>country: {{productdata.country_of_origin}}</h5><br> -->
+	<!-- <p>Specifications <br>{{productdata.spec| safe}}</p> -->
+      <!-- <p><button class="button"><a href="{%url 'product-detail' productdata.pk%}">See Details</a></button></p> -->
+      </div>
+    </div>
+  </div>
+ {% endfor %}
+</div>
+
+{% else%}
+<h2>Sorry this page does not exist...</h2>
+{%endif%}
+
+</body>
+</html>
+{% endblock %}

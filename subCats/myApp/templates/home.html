@@ -1,3 +1,5 @@
+{% block content %}
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,21 +20,22 @@
 </style>
 </head>
 <body>
-
-{% load mptt_tags %}
    
 <div class="container">
+  <h2>Multi-Level Dropdowns</h2>
+  <p>In this example, we have created a .dropdown-submenu class for multi-level dropdowns (see style section above).</p>
+  <p>Note that we have added jQuery to open the multi-level dropdown on click (see script section below).</p>                                        
   <div class="dropdown">
-    <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Cats
+    <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Tutorials
     <span class="caret"></span></button>
     <ul class="dropdown-menu">
-  		{% recursetree genres %}
-      	{{ node.name }}
+      <li><a tabindex="-1" href="#">HTML</a></li>
+      <li><a tabindex="-1" href="#">CSS</a></li>
       <li class="dropdown-submenu">
         <a class="test" tabindex="-1" href="#">New dropdown <span class="caret"></span></a>
- 	  {% if not node.is_leaf_node %}
         <ul class="dropdown-menu">
-		{{ children }}
+          <li><a tabindex="-1" href="#">2nd level dropdown</a></li>
+          <li><a tabindex="-1" href="#">2nd level dropdown</a></li>
           <li class="dropdown-submenu">
             <a class="test" href="#">Another dropdown <span class="caret"></span></a>
             <ul class="dropdown-menu">
@@ -41,13 +44,10 @@
             </ul>
           </li>
         </ul>
-        {% endif %}
       </li>
-{% endrecursetree %}
     </ul>
   </div>
 </div>
-
 
 <script>
 $(document).ready(function(){
@@ -63,4 +63,22 @@ $(document).ready(function(){
 </html>
 
 
+
+
+
+<h1>hello</h1>
+
+
+{% for productdata in object_list %}
+
+<h1>{{productdata.product_name}}</h1>
+<h1>{{productdata.genre.name}}</h1>
+
+{% endfor%}
+
+
+
+
+
+{% endblock %}
 

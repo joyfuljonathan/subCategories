@@ -27,14 +27,15 @@
     <span class="caret"></span></button>
     <ul class="dropdown-menu">
   		{% recursetree genres %}
-      	{{ node.name }}
+      	
+<a class="test" href="{% url 'genre' 5 %}">{{ node.name }}<span class="caret"></span></a>
       <li class="dropdown-submenu">
         <a class="test" tabindex="-1" href="#">New dropdown <span class="caret"></span></a>
  	  {% if not node.is_leaf_node %}
         <ul class="dropdown-menu">
 		{{ children }}
           <li class="dropdown-submenu">
-            <a class="test" href="#">Another dropdown <span class="caret"></span></a>
+            <a class="test" href="{% url 'genre' 5 %}">Another dropdown <span class="caret"></span></a>
             <ul class="dropdown-menu">
               <li><a href="#">3rd level dropdown</a></li>
               <li><a href="#">3rd level dropdown</a></li>

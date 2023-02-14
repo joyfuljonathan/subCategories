@@ -1,4 +1,4 @@
-{% extends 'base.html'%}
+
 {% block content %}
 <!DOCTYPE html>
 <html>
@@ -77,6 +77,9 @@ html {
 </head>
 <body>
 
+  <h1>ECOLOGICS</h1>
+
+
 <div class="about-section">
   <h1>ECOLOGICS</h1>
 	<h1>oooooh</h1>
@@ -86,24 +89,15 @@ html {
 
 {% if genre_products%}
 
-<h1>{{cats}} </h1>
+<h1>{{genre}} </h1>
 
 <div class="row">
 {% for productdata in genre_products%}
   <div class="column">
-    <div class="card">
-      <!-- <img src="{{ post.header_image.url}}" alt="Jane" style="width:100%"> -->
+    <div class="card"> 
       <div class="container">
         <h2>{{productdata.product_name}}</h2>
-	<!-- <p>{{productdata.short_description|slice:":150"|safe}}</p> -->
   <p class="title">{{productdata.maker}}</p>
-	<!-- <h5>{{productdata.product_name}}</h5> -->
-	<!-- <h5>general name: {{productdata.general_name}}</h5> -->
-	<!-- <h5>keyword: {{productdata.keyword}}</h5>q -->
-	<!-- <h5>sub category: {{productdata.sub_category}}</h5> -->
-	<!-- <h5>country: {{productdata.country_of_origin}}</h5><br> -->
-	<!-- <p>Specifications <br>{{productdata.spec| safe}}</p> -->
-      <!-- <p><button class="button"><a href="{%url 'product-detail' productdata.pk%}">See Details</a></button></p> -->
       </div>
     </div>
   </div>

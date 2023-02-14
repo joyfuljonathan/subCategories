@@ -21,5 +21,6 @@ urlpatterns = [
  path(r'^genres/$', show_genres),
  path('', HomeView.as_view(), name = 'home'),
 #below is the path for the url in the blog app
-path('genre/<str:genre>/', CategoryView, name= 'genre'),
+path('genre/<str:genrep>/', CategoryView, name= 'genre'),
+#path('genre/', CategoryView, name= 'genre'),
 ]

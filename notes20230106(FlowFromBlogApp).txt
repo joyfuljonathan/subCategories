@@ -1,0 +1,42 @@
+**************models
+
+
+model>>>>>>>>> category model <Category>
+	charfield>>>>>>>>>>> <name>
+model>>>>>>>>> product data model <ProductData>
+	charfield>>>>>>>>>>> <category>
+
+
+**************views
+
+view>>>>>>>>>>>>category view <CategoryView>
+	parameters>>>>>>>>>><request, cats>
+	varieable>>>>>>>>>><category_products>
+
+
+def CategoryView(request, cats):
+    category_products = ProductData.objects.filter(category=cats.replace('-', ' '))
+    return render(request, 'categories.html', {'cats': cats.replace('-', ' '), 'category_products': category_products})
+
+
+
+
+**************templates
+
+categories.html
+
+{% if category_products%}
+<h1>{{cats}} </h1>
+{% for productdata in category_products%}
+ <h2>{{productdata.product_name}}</h2>
+
+
+**************URLS.py
+
+
+path('category/<str:cats>/', CategoryView, name= 'category'),
+
+actual URL pattern 
+http://127.0.0.1:8000/category/FirstCat/
+
+Zatsu...

@@ -1,0 +1,48 @@
+**************models
+
+
+model>>>>>>>>> category model <Genre>
+	charfield>>>>>>>>>>> <name>
+	@@@@@@@@@@@@@@@@@@@@@TreeForeignKey>>>>>>>> <parent>@@@@@@@@@@@@@@@@@@@@@
+	??????????????????????what data type is TreeForeignKey
+model>>>>>>>>> product data model <ProductData>
+	@@@@@@@@@@@@@@@@@@@@@models.ForeignKey>>>>>>>>>>> <genre>@@@@@@@@@@@@@@@@@@@
+
+
+**************views
+
+view>>>>>>>>>>>>category view <CategoryView>
+	parameters>>>>>>>>>><request, genre>
+	varieable>>>>>>>>>><genre_products>
+
+
+def CategoryView(request, genre):
+    genre_products = ProductData.objects.filter(genre=genre.replace('-', ' '))
+    return render(request, 'categories.html', {'genre': genre.replace('-', ' '), 'genre_products': genre_products})
+
+@@@@@@@@@@@@@@@ Maybe i should change the genre paraemeter to something like genrep, is there a name conflict?
+xxxxxxxxxxxxxxx I did this, but it did not seem to change the situation
+
+**************templates
+
+categories.html
+
+{% if genre_products%}
+<h1>{{genres}} </h1>
+{% for productdata in genre_products%}
+<h2>{{productdata.product_name}}</h2>
+
+
+**************URLS.py
+
+path('genre/<str:genre>/', CategoryView, name= 'genre'),
+xxxxxxxxxxxxxxxaccording to this, it should be a string
+
+actual URL pattern 
+
+http://127.0.0.1:8000/genre/1/
+
+the URL seems to accept any number, but it does not display any content or actually load the page... 
+
+
+Zatsu...

@@ -2,6 +2,11 @@ from django.shortcuts import render
 from .models import Genre, ProductData
 from django.views.generic import ListView
 
+
+from django.http.response import HttpResponse
+from django.urls import reverse_lazy, reverse
+from django.shortcuts import render, get_object_or_404
+from django.http import HttpResponseRedirect
 def show_genres(request):
     return render(request, "genres.html", {'genres': Genre.objects.all()})
 
@@ -26,9 +31,14 @@ class HomeView(ListView):
 
 
 #this is the view from the blog site
-def CategoryView(request, cats):
-    genre_products = ProductData.objects.filter(genre=cats.replace('-', ' '))
-    return render(request, 'categories.html', {'cats': cats.replace('-', ' '), 'genre_products': genre_products})
+def CategoryView(request, genrep):
+    genre_products = ProductData.objects.filter(genre=genrep.replace('-', ' '))
+    return render(request, 'categories.html', {'genrep': genrep.replace('-', ' '), 'genre_products': genre_products})
+
+
+
+
+
 
 
 

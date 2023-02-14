@@ -1,0 +1,55 @@
+##########################################################original blog
+
+
+path('category/<str:cats>/', CategoryView, name= 'category'),
+
+
+***********************template
+
+{% if cat_menu%}									
+{%for item in cat_menu%}					
+<a tabindex="-1" href="{% url 'category' item %}">{{item}}</a>	
+	<br>
+	<h1>test</h1>
+	{% if cat_menu2%}		
+	{%for item2 in cat_menu2%}
+	<a tabindex="-1" href="{% url 'category2' item2 %}">{{item2}}</a>	
+	{%endfor%}
+	{%endif%}		
+{%endfor%}													
+{%endif%}		
+
+
+***********************view
+def CategoryView(request, cats):
+    category_products = ProductData.objects.filter(category=cats.replace('-', ' '))
+    return render(request, 'categories.html', {'cats': cats.replace('-', ' '), 'category_products': category_products})
+
+
+
+******************category model 
+
+Class Category(models.Model):
+    name = models.CharField(max_length=255)
+
+    def __str__(self):
+        return self.name
+    
+    def get_absolute_url(self):
+        return reverse('home')
+
+
+
+##############################new product page
+
+i need to add the path, i need to make the template, i need to make the view...
+class is ok but it is different from the other 
+
+model name is Genre...
+
+
+this is the way the URL pattern looks for blog category page 
+http://127.0.0.1:8000/category/FirstCat/
+
+
+
